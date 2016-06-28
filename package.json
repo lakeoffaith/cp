@@ -1,0 +1,16 @@
+{
+  "name": "cp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "react": "15.1.0",
+    "react-native": "^0.28.0",
+    "react-native-circular-progress": "0.0.7",
+    "react-native-datepicker": "^1.2.2",
+    "react-native-material-design": "^0.3.6",
+    "react-native-scrollable-tab-view": "^0.5.1"
+  }
+}
