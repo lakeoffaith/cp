@@ -55,6 +55,7 @@ export default class Navigate {
         this.currentRoute = null;
         this.previousRoute = null;
         this.isChild = false;
+       this.actionsArray=null;
         BackAndroid.addEventListener('hardwareBackPress', this._hardwareBackPress);
     }
 
@@ -146,11 +147,13 @@ export default class Navigate {
             if (!obj || !obj.component) {
                 console.warn(`[Navigate.to(${path})] No component exists at this path`);
             } else {
+                this.actionsArray=obj.actionsArray?obj.actionsArray:null;
                 this.isChild = path.split('.').length > 1;
                 const route = {
                     title: title ? title : (obj.title ? obj.title : path),
                     path,
                     component: obj.component,
+                    actionsArray:this.actionsArray,
                     props
                 };
                 this.previousRoute = this.currentRoute;
@@ -180,6 +183,7 @@ export default class Navigate {
                 title: title ? title : (this.previousRoute ? this.previousRoute.title : (obj.title || this._getPathPrettyName(path))),
                 path,
                 component: obj.component,
+                actionsArray:obj.actionsArray,
                 props
             };
 
@@ -200,6 +204,7 @@ export default class Navigate {
         const currentObject = this._getRouteObject(current);
 
         if (!currentObject.children || !Object.keys(currentObject.children).length) {
+
             console.warn(`[Navigate.forward()] No child components exists for ${current}`);
         } else {
             this.isChild = true;

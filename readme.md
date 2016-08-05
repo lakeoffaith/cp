@@ -15,12 +15,16 @@ http://www.tuicool.com/articles/nUryimf
     ~~ListView~~             office
       ~~ToolbarAndroid~~     office
       switchAndroid          office
+     ~~ScrollView~~
       ~~navgator~~              http://www.cnblogs.com/flyingzl/articles/4913693.html
       TouchableNativeFeedback
       ~~backAndroid~~           search 安卓Back键的处理·基本+高级篇
     ~~react-native-vector-icons~~  http://blog.csdn.net/pkaq_/article/details/51168435
     ~~tcomb-form-native~~       https://github.com/gcanti/tcomb-form-native
     react-native-scrollable-tab-view  https://github.com/skv-headless/react-native-scrollable-tab-view
+    ~~react-native-material-kit~~
+      ~~react-native-system-notification~~
+      ~~react-native-gifted-listview~~
     react-native-progress
     react-native-app-intro
     react-native-awesome-button

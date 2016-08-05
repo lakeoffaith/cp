@@ -6,7 +6,8 @@ import {
     View,
     Text,
     Image,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity
 }from 'react-native'
 import { Avatar, Drawer, Divider, COLOR, TYPO } from 'react-native-material-design';
 export default class Navigation extends React.Component{
@@ -27,6 +28,7 @@ export default class Navigation extends React.Component{
     render(){
         const {route}=this.state;
         return(
+            <View style={{flex:1}}>
             <Drawer theme='light'>
                 <Drawer.Header image={<Image source={require('../../img/nav.jpg')} />}>
                     <View style={styles.header}>
@@ -35,61 +37,67 @@ export default class Navigation extends React.Component{
                     </View>
                 </Drawer.Header>
 
+
+
                 <Drawer.Section
-                    items={[{
+                    items={[
+                    {
                         icon: 'home',
                         value: 'Welcome',
                         active: !route || route === 'Main',
                         onPress: () => this.changeScene('Main'),
                         onLongPress: () => this.changeScene('Main')
-                    }]}
-                />
-
-                <Drawer.Section
-                    title="功能区"
-                    items={[{
+                    },{
                         icon: 'face',
-                        value: 'Ac管理',
+                        value: 'AC管理',
                         label: '12',
                         active: route === 'Ac',
                         onPress: () => this.changeScene('Ac'),
                         onLongPress: () => this.changeScene('Ac')
                     }, {
                         icon: 'label',
-                        value: 'Buttons',
-                        active: route === 'buttons',
+                        value: 'AP管理',
+
+                        active: route === 'Ap',
                         label: '8',
-                        onPress: () => this.changeScene('buttons'),
-                        onLongPress: () => this.changeScene('buttons')
+                        onPress: () => this.changeScene('Ap'),
+                        onLongPress: () => this.changeScene('Ap')
                     }, {
                         icon: 'check-box',
-                        value: 'Checkboxes',
+                        value: '快速配置',
                         label: '10',
-                        active: route === 'checkboxes',
-                        onPress: () => this.changeScene('checkboxes'),
-                        onLongPress: () => this.changeScene('checkboxes')
+                        active: route === 'QuickConfig',
+                        onPress: () => this.changeScene('QuickConfig'),
+                        onLongPress: () => this.changeScene('QuickConfig')
                     }, {
                         icon: 'label',
-                        value: 'Dividers',
+                        value: '详细配置',
                         label: '10',
-                        active: route === 'dividers',
-                        onPress: () => this.changeScene('dividers'),
-                        onLongPress: () => this.changeScene('dividers')
+                        active: route === 'DetailConfig',
+                        onPress: () => this.changeScene('DetailConfig'),
+                        onLongPress: () => this.changeScene('DetailConfig')
                     }, {
                         icon: 'label',
-                        value: 'Icon Toggles',
-                        label: 'NEW',
-                        active: route === 'icon-toggles',
-                        onPress: () => this.changeScene('icon-toggles'),
-                        onLongPress: () => this.changeScene('icon-toggles')
+                        value: '安全检测',
+                        label: '2',
+                        active: route === 'Security',
+                        onPress: () => this.changeScene('Security'),
+                        onLongPress: () => this.changeScene('Security')
                     }, {
-                        icon: 'radio-button-checked',
-                        value: 'Radio Buttons',
-                        label: '8',
-                        active: route === 'radio-buttons',
-                        onPress: () => this.changeScene('radio-buttons'),
-                        onLongPress: () => this.changeScene('radio-buttons')
-                    },
+                        icon: 'label',
+                        value: '个人中心',
+                        label: '2',
+                        active: route === 'UserCenter',
+                        onPress: () => this.changeScene('UserCenter'),
+                        onLongPress: () => this.changeScene('UserCenter')
+                    }, {
+                        icon: 'label',
+                        value: '系统设置',
+                        label: '2',
+                        active: route === 'Setting',
+                        onPress: () => this.changeScene('Setting'),
+                        onLongPress: () => this.changeScene('Setting')
+                    }
                      //{
                      //   icon: 'list',
                      //   value: 'List',
@@ -98,35 +106,32 @@ export default class Navigation extends React.Component{
                      //   onPress: () => this.changeScene('list'),
                      //   onLongPress: () => this.changeScene('list')
                      //},
-                    {
-                        icon: 'label',
-                        value: 'Subheaders',
-                        label: '4',
-                        active: route === 'subheaders',
-                        onPress: () => this.changeScene('subheaders'),
-                        onLongPress: () => this.changeScene('subheaders')
-                    }]}
-                />
-                <Divider style={{ marginTop: 8 }} />
-                <Drawer.Section
-                    title="Config"
-                    items={[{
-                        icon: 'invert-colors',
-                        value: 'Change Theme',
-                        label: '24',
-                        active: route === 'themes',
-                        onPress: () => this.changeScene('themes'),
-                        onLongPress: () => this.changeScene('themes')
-                    }]}
+                    ]}
                 />
 
+
                 </Drawer>
+                <View style={{marginBottom:0,flexDirection:'row',height:40}}>
+
+                    <View  style={{flex:1,backgroundColor:'blue',alignItems:'center',justifyContent:'center'}}>
+                        <TouchableOpacity  onPress={()=>this.changeScene('Login')}>
+                        <Text style={{fontSize:20}}>登录</Text>
+                        </TouchableOpacity >
+                    </View>
+
+                    <View onPress={()=>this.changeScene('Register')} style={{flex:1,backgroundColor:'green',alignItems:'center',justifyContent:'center'}}>
+                        <TouchableOpacity  onPress={()=>this.changeScene('Register')}>
+                            <Text style={{fontSize:20}}>注册</Text>
+                        </TouchableOpacity >
+                    </View>
+                    </View>
+                </View>
         );
     }
 }
 Navigation.contextTypes={
     drawer:React.PropTypes.object.isRequired,
-    navigator:React.PropTypes.object.isRequired
+    navigator:React.PropTypes.object
 }
 
 const styles =StyleSheet.create( {

@@ -11,20 +11,15 @@ import {
 } from 'react-native'
 
 
+
 import t from 'tcomb-form-native'
 const Form=t.form.Form;
 const AC=t.struct({
     型号:t.String,
-    批号: t.String,
     生产厂商: t.String,  // an optional string
     安装时间: t.Date,               // a required number
-
+    批号: t.String
 });
-/**
- * return '2016-07-07'
- * @param d
- * @returns {null}
- */
 const dealDate=(d)=>{
     var date=new Date(d);
     var month=parseInt(date.getMonth())+1;
@@ -42,12 +37,7 @@ const options = {
         }
     }
 };
-
-export default class EditAc extends  React.Component{
-    constructor(){
-        super();
-
-    }
+export default class EditAp extends  React.Component{
     componentDidMount() {
         var navigator = this.props.navigator;
         BackAndroid.addEventListener('hardwareBackPress', function() {
@@ -61,7 +51,9 @@ export default class EditAc extends  React.Component{
     componentWillUnmount() {
         BackAndroid.removeEventListener('hardwareBackPress');
     }
-
+    constructor(){
+        super();
+    }
     onPress(){
         let value=this.refs['form'].getValue();
         if(value){

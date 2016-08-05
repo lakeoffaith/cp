@@ -1,7 +1,4 @@
 /**
- * Created by ijoy on 16-6-28.
- */
-/**
  * Created by ijoy on 16-6-24.
  */
 import React from 'react'
@@ -15,8 +12,9 @@ import {
 } from 'react-native'
 import GiftedListView from 'react-native-gifted-listview'
 import {Icon} from 'react-native-material-design'
-var VCArrays=[{name:"TLAC100",type:'error'},{name:"TLAC100",type:'warning'},{name:"TLAC100",type:'warning'},{name:"TLAC100"},{name:"TLAC100"},{name:"TLAC100"},{name:"TLAC100"}];
-export default class ListAc extends  React.Component{
+var VCArrays=[{name:"DB5318",type:'error',company:'成都维远艾钰信息技术有限公司'},{name:"DB5318",type:'warning',company:'成都维远艾钰信息技术有限公司'},{name:"DB5318",type:'warning',company:'成都维远艾钰信息技术有限公司'},{name:"DB5318",company:'成都维远艾钰信息技术有限公司'},{name:"DB5318",company:'成都维远艾钰信息技术有限公司'},{name:"DB5318",company:'成都维远艾钰信息技术有限公司'}];
+
+export default class ListAp extends  React.Component{
     /**
      * Will be called when refreshing
      * Should be replaced by your own logic
@@ -46,7 +44,7 @@ export default class ListAc extends  React.Component{
         console.log(rowData+' pressed');
     }
     _renderIcon(type){
-        return type?<Icon name={type} size={40} color={type==='error'?'#D50000':'#FFFF00'}/>:null;
+        return type? <Icon name={type} size={40} color={type==='error'?'#D50000':'#FFFF00'}/>:null;
     }
     _renderRowView(item){
         return(
@@ -54,13 +52,12 @@ export default class ListAc extends  React.Component{
                 <View style={{ flexDirection:'row',height:80,margin:5,backgroundColor:'gray',borderWidth:0.5}}>
                     <View style={{flex:1}}>
                         <Text style={{fontSize:20,color:'blue',marginBottom:5}}>{item.name}</Text>
-                            <Text><Text style={{fontWeight:'bold'}}>运行时间</Text>：<Text style={{color:'yellow',fontSize:18}}>400</Text>天</Text>
-                            <Text><Text style={{fontWeight:'bold'}}>生产厂家</Text>：成都维远艾钰信息技术有限公司</Text>
-                        </View>
+                        <Text><Text style={{fontWeight:'bold'}}>运行时间</Text>：<Text style={{color:'yellow',fontSize:18}}>200</Text>天</Text>
+                        <Text><Text style={{fontWeight:'bold'}}>生产厂家</Text>：{item.company}</Text>
+                    </View>
                     <View style={{width:60,justifyContent:'center',alignItems:'center'}}>
                         {this._renderIcon(item.type)}
-
-                        </View>
+                    </View>
 
                 </View>
             </TouchableNativeFeedback>
@@ -69,7 +66,7 @@ export default class ListAc extends  React.Component{
     changeScene(){
         const {drawer,navigator}=this.context;
 
-        navigator.to('Ac.ShowAc');
+        navigator.to('Ap.ShowAp');
         drawer.closeDrawer();
     }
     render(){
@@ -98,17 +95,7 @@ export default class ListAc extends  React.Component{
         );
     }
 }
-
-ListAc.contextTypes={
+ListAp.contextTypes={
     navigator:React.PropTypes.object.isRequired,
     drawer:React.PropTypes.object.isRequired,
 }
-const styles=StyleSheet.create({
-    item:{
-        flexDirection:'row',
-        height:80,
-        margin:5,
-        backgroundColor:'gray',
-        borderWidth:0.5
-    }
-});

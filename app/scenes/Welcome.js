@@ -18,7 +18,7 @@ export default class Welcome extends React.Component{
     render(){
         return(
             <View style={styles.container}>
-                <Image source={require('../img/welcome1.jpg')} style={styles.img}>
+                <Image source={require('../img/welcome1.jpg')} style={styles.img} >
                     <View style={styles.welcomeContainer}>
                         <Text style={styles.welcome}>
                             AC控制器智能应用软件系统

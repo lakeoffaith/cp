@@ -48,8 +48,36 @@ class CP extends Component {
     componentWillUnmount(){
         clearTimeout(this.times);
     }
+    getBarData(){
+        var data={
+            xValues:['1','2','3'],
+            yValues:[
+                {
+                    data:[4.0,5.0,6.0],
+                    label:'test1',
+                    config:{
+                        color:'blue'
+                    }
+                },
+                {
+                    data:[4.0,5.0,6.0],
+                    label:'test2',
+                    config:{
+                        color:'red'
+                    }
+                },
+                {
+                    data:[4.0,5.0,6.0],
+                    label:'test2',
+                    config:{
+                        color:'yellow'
+                    }
+                }
+            ]
+        };
+        return data;
+    }
     render() {
-
       const {drawer,navigator,isWelcome}=this.state;
       const navView = React.createElement(Navigation);
         if(isWelcome)return <Welcome/>;
